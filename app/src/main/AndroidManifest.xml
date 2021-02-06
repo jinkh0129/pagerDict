@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sungdonggu.pagerdict">
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,19 +11,52 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PagerDict">
-        <activity android:name=".Python.CodeActivity">
+        <activity android:name=".BottomNavigation.BottomNavigationActivity">
+
+        </activity>
+        <activity android:name=".DictWithSort.SortedDictionaryActivity" />
+        <activity android:name=".NewsWithSort.SortedNewsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Python.PythonActivity">
+        <activity android:name=".Kotlin.Sort.DetailsActivity" />
+        <activity android:name=".Kotlin.Sort.SortMainActivity" />
+        <activity android:name=".Kotlin.AlarmManagerBasic.Practice.AlarmManagerActivity" />
+        <activity android:name=".Kotlin.AlarmManagerBasic.ScheduledTask.KotlinScheduledActivity" />
+        <activity android:name=".Java.AlarmManagerBasic.ScheduledTask.JavaScheduledActivity" />
+        <activity android:name=".Dictionary.DictionaryActivity" />
+        <activity android:name=".Kotlin.JobScheduler.KotlinJobSchedulerActivity" />
+        <activity android:name=".Java.JobScheduler.JavaJobSchedulerActivity" />
+        <activity android:name=".Kotlin.Notification.KotlinNotificatonActivity" />
+        <activity android:name=".Java.Notification.JavaNotificationActivity" />
+        <activity android:name=".Kotlin.AlarmManagerBasic.KotlinAlarmActivity" />
+        <activity android:name=".Java.AlarmManagerBasic.AlarmActivity" />
+        <activity android:name=".Python.CodeActivity" />
+        <activity android:name=".Python.PythonActivity" />
+        <activity android:name=".MainActivity" />
 
-        </activity>
-        <activity android:name=".MainActivity">
+        <service
+            android:name=".Java.JobScheduler.JavaExampleJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".Kotlin.JobScheduler.KotlinExampleJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        </activity>
+        <receiver
+            android:name=".Java.AlarmManagerBasic.ScheduledTask.JavaMyAlarm"
+            android:enabled="true"
+            android:exported="true" />
+        <receiver
+            android:name=".Kotlin.AlarmManagerBasic.ScheduledTask.KotlinMyAlarm"
+            android:enabled="true"
+            android:exported="true" />
+        <receiver
+            android:name=".Kotlin.AlarmManagerBasic.Practice.Receiver"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

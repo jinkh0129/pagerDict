@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import com.sungdonggu.pagerdict.SQL.DictionaryContentAdapter
-import com.sungdonggu.pagerdict.SQL.DictionaryDatabase
+import com.sungdonggu.pagerdict.SQL.ContentDictionaryDatabase
 import com.sungdonggu.pagerdict.SQL.ContentSQLhelper
 import kotlinx.android.synthetic.main.fragment_real_dictionary.*
 
@@ -21,9 +21,9 @@ class DictionartContentFragment : Fragment() {
     private lateinit var dictDatabase: FirebaseDatabase
     private lateinit var dictReference: DatabaseReference
     private lateinit var rv_dict_content_fragment: RecyclerView
-    var listDict: MutableList<DictionaryDatabase> = mutableListOf()
+    var listDict: MutableList<ContentDictionaryDatabase> = mutableListOf()
     private lateinit var helper: ContentSQLhelper
-    private lateinit var wordDictList: ArrayList<DictionaryDatabase>
+    private lateinit var wordDictList: ArrayList<ContentDictionaryDatabase>
 
     val DB_NAME = "dictionary"
     val DB_VERSION = 1
@@ -34,7 +34,6 @@ class DictionartContentFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_real_dictionary, container, false)
-        val secondView: View = inflater.inflate(R.layout.fragment_like_dictionary, container, false)
         dictDatabase = FirebaseDatabase.getInstance()
         dictReference = dictDatabase.getReference("한국은행 경제용어사전")
         rv_dict_content_fragment = view.findViewById(R.id.rv_dict_content_fragment)
@@ -57,7 +56,7 @@ class DictionartContentFragment : Fragment() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
                         for (data in snapshot.children) {
-                            val dict = DictionaryDatabase(
+                            val dict = ContentDictionaryDatabase(
                                 null,
                                 data.child("word").value.toString(),
                                 data.child("content").value.toString()
@@ -93,12 +92,12 @@ class DictionartContentFragment : Fragment() {
     }
 
     private fun searchWord(str: String) {
-        var wordList: ArrayList<DictionaryDatabase> = ArrayList()
-        var fragObj: DictionaryDatabase
+        var wordList: ArrayList<ContentDictionaryDatabase> = ArrayList()
+        var fragObj: ContentDictionaryDatabase
         for (fragObj in wordDictList) {
             if (fragObj.word?.toLowerCase()?.contains(str.toLowerCase()) == true) {
                 wordList.add(fragObj)
-                helper.insertData(wordList as DictionaryDatabase)
+                helper.insertData(wordList as ContentDictionaryDatabase)
             }
         }
         val fragAdapterClass = DictionaryContentAdapter()

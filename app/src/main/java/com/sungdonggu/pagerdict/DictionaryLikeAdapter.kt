@@ -1,14 +1,10 @@
 package com.sungdonggu.pagerdict
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.sungdonggu.pagerdict.SQL.DictionaryDatabase
 import com.sungdonggu.pagerdict.SQL.LikeDatabase
-import com.sungdonggu.pagerdict.SQL.LikeSQLhelper
 import kotlinx.android.synthetic.main.dictionary_content_item.view.*
 import kotlinx.android.synthetic.main.dictionary_like_item.view.*
 

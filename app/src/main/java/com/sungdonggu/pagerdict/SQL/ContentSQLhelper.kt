@@ -18,7 +18,7 @@ class ContentSQLhelper(context: Context?, name: String, version: Int) :
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
     }
 
-    fun insertData(dict: DictionaryDatabase) {
+    fun insertData(dict: ContentDictionaryDatabase) {
         val wd = writableDatabase
         val values = ContentValues()
 
@@ -29,8 +29,8 @@ class ContentSQLhelper(context: Context?, name: String, version: Int) :
         wd.close()
     }
 
-    fun selectData():MutableList<DictionaryDatabase>{
-        val list = ArrayList<DictionaryDatabase>()
+    fun selectData():MutableList<ContentDictionaryDatabase>{
+        val list = ArrayList<ContentDictionaryDatabase>()
 
         val selectQuery = "SELECT * FROM dictionary"
         var rd = readableDatabase
@@ -41,7 +41,7 @@ class ContentSQLhelper(context: Context?, name: String, version: Int) :
             val word = cursor.getString(cursor.getColumnIndex("word"))
             val def = cursor.getString(cursor.getColumnIndex("def"))
 
-            val dict = DictionaryDatabase(id, word, def)
+            val dict = ContentDictionaryDatabase(id, word, def)
             list.add(dict)
         }
         cursor.close()

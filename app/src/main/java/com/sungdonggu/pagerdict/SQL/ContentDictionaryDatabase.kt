@@ -1,6 +1,6 @@
 package com.sungdonggu.pagerdict.SQL
 
-data class DictionaryDatabase(
+data class ContentDictionaryDatabase(
     var id: Long?,
     var word: String,
     var def: String,

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Dictionary.DictionaryActivity">
+
+    <FrameLayout
+        android:id="@+id/pure_frame_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f7f7f7" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/pure_bottom_NavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#f5511e"
+        app:labelVisibilityMode="selected"
+        app:menu="@menu/dictionary_bottom_menu" />
+</RelativeLayout>
